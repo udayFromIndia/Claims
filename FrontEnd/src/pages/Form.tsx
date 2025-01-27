@@ -4,16 +4,7 @@ import {
   Card,
   CircularProgress,
   Container,
-  FormControl,
-  FormControlLabel,
-  MenuItem,
-  Radio,
-  RadioGroup,
-  Select,
 } from "@mui/material";
-import TextField from "@mui/material/TextField";
-import { DesktopDatePicker } from "@mui/x-date-pickers";
-import Textarea from "@mui/joy/Textarea";
 import * as yup from "yup";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -23,6 +14,11 @@ import { AxiosError, AxiosResponse } from "axios";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import StyledInput from "../components/StyledInput";
+import StyledTextArea from "../components/StyledTextArea";
+import StyledSelect from "../components/StyledSelect";
+import StyledDatePicker from "../components/StyledDatePicker";
+import StyledRadioButton from "../components/StyledRadioButton";
 
 interface FormProps {
   full_name: string;
@@ -46,17 +42,6 @@ const validationSchema = yup.object().shape({
 });
 
 const Form = () => {
-
-  const claimTypeList = [
-    {
-      label: "Full",
-      value: "1"
-    },
-    {
-      label: "Partial",
-      value: "2"
-    },
-  ]
   const navigate = useNavigate()
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -95,7 +80,6 @@ const Form = () => {
   const onFailureById = (error: AxiosError | any) => {
     toast.error(error?.data?.message ?? "Semething went wrong")
   }
-
   const { callFetch: callFetchById, } = useApi({ onSuccess: onSuccessById, onFailure: onFailureById })
 
   useEffect(() => {
@@ -105,7 +89,6 @@ const Form = () => {
   }, [claim_id])
 
   // add/edit Claims 
-
   const onSuccessAdd = (response: AxiosResponse | any) => {
     if (response?.data?.flag) {
       toast.success(response?.data?.message)
@@ -150,7 +133,6 @@ const Form = () => {
 
     callFetchAdd(`${claim_id ? "put" : "post"}`, "/api/Claims", payload)
   };
-
   return (
     <>
       <Container>
@@ -187,25 +169,13 @@ const Form = () => {
                           fieldState: { error, isDirty, invalid },
                         }) => (
                           <>
-                            <FormControl fullWidth>
-                              <TextField
-                                variant="outlined"
-                                // size="small"
-                                // style={{ border: "2px solid red", borderRadius: "5px" }}
-                                placeholder="Enter name"
-                                className="w-full"
-                                value={value && value}
-                                onChange={onChange}
-                                error={invalid && (!isDirty || isDirty)}
-                              // helperText={error?.message}
-                              />
-                            </FormControl>
-                            {invalid && (!isDirty || isDirty) && (
-                              <p className="text-red-500 text-[13px]">
-                                {error?.message}
-                              </p>
-                            )
-                            }
+                            <StyledInput
+                              value={value}
+                              onChange={onChange}
+                              placeholder="Enter name"
+                              error={invalid && (!isDirty || isDirty)}
+                              errorText={error?.message}
+                            />
                           </>
                         )}
                       />
@@ -221,33 +191,20 @@ const Form = () => {
                         control={control}
                         render={({ field: { onChange, value }, fieldState: { error, isDirty, invalid } }) => (
                           < >
-                            <div style={{ borderWidth: "1px", borderColor: `${invalid && (!isDirty || isDirty) ? "red" : "#E1E1E1"}`, borderRadius: "5px" }}>
-                              <FormControl fullWidth>
-                                <DesktopDatePicker
-                                  value={value ? dayjs(value, 'DD/MM/YYYY') : null}
-                                  // value={value}
-                                  onChange={(newValue: any) => {
-                                    const date = new Date(newValue);
-
-                                    const day = String(date.getDate()).padStart(2, '0');
-                                    const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
-                                    const year = date.getFullYear();
-
-                                    const formattedDate = `${day}-${month}-${year}`;
-                                    onChange(formattedDate)
-                                  }}
-                                  className="w-full"
-                                  disableFuture
-                                  format="DD/MM/YYYY"
-                                />
-                              </FormControl>
-                            </div>
-                            {invalid && (!isDirty || isDirty) && (
-                              <p className="text-red-500 text-[13px]">
-                                {error?.message}
-                              </p>
-                            )
-                            }
+                            <StyledDatePicker
+                              value={value ? dayjs(value, 'DD/MM/YYYY') : null}
+                              onChange={(newValue: any) => {
+                                const date = new Date(newValue);
+                                const day = String(date.getDate()).padStart(2, '0');
+                                const month = String(date.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+                                const year = date.getFullYear();
+                                const formattedDate = `${day}-${month}-${year}`;
+                                onChange(formattedDate)
+                              }}
+                              error={invalid && (!isDirty || isDirty)}
+                              errorText={error?.message}
+                              format="DD/MM/YYYY"
+                            />
                           </>
                         )}
                       />
@@ -261,25 +218,13 @@ const Form = () => {
                         control={control}
                         render={({ field: { onChange, value }, fieldState: { error, isDirty, invalid } }) => (
                           <>
-                            <FormControl fullWidth>
-                              <Select
-                                error={invalid && (!isDirty || isDirty)}
-                                value={value}
-                                displayEmpty
-                                onChange={onChange}
-
-                              >
-                                <MenuItem value={""}>Choose...</MenuItem>
-                                <MenuItem value={"male"}>Male</MenuItem>
-                                <MenuItem value={"female"}>Female</MenuItem>
-                              </Select>
-                            </FormControl>
-                            {invalid && (!isDirty || isDirty) && (
-                              <p className="text-red-500 text-[13px]">
-                                {error?.message}
-                              </p>
-                            )
-                            }
+                            <StyledSelect
+                              value={value}
+                              onChange={onChange}
+                              options={[{ label: "Male", value: "male" }, { label: "Female", value: "female" }]}
+                              error={invalid && (!isDirty || isDirty)}
+                              errorText={error?.message}
+                            />
                           </>
                         )}
                       />
@@ -295,46 +240,14 @@ const Form = () => {
                         control={control}
                         render={({ field: { onChange, value }, fieldState: { error, isDirty, invalid } }) => (
                           <>
-                            <FormControl
-                              style={{
-                                border: `1px solid ${invalid && (!isDirty || isDirty) ? "red" : "#E1E1E1"}`,
-                                width: "100%",
-                                padding: "5px",
-                                borderRadius: "5px",
-                              }}
-                            >
-                              <RadioGroup
-                                row={true}
-                                value={value}
-                                onChange={onChange}
-                              >
-                                <div className="flex gap-5 ms-3">
-                                  <FormControlLabel
-                                    value=""
-                                    control={<Radio />}
-                                    label=""
-                                    hidden={true}
-                                  />
-                                  {
-                                    claimTypeList?.map((items: any) => {
-                                      return (
-                                        <FormControlLabel
-                                          value={items?.value}
-                                          control={<Radio />}
-                                          label={items?.label}
-                                        />
-                                      )
-                                    })
-                                  }
-                                </div>
-                              </RadioGroup>
-                            </FormControl>
-                            {invalid && (!isDirty || isDirty) && (
-                              <p className="text-red-500 text-[13px]">
-                                {error?.message}
-                              </p>
-                            )
-                            }
+                            <StyledRadioButton
+                              row={true}
+                              value={value}
+                              onChange={onChange}
+                              options={[{ label: "Full", value: "1" }, { label: "Partial", value: "2" }]}
+                              error={invalid && (!isDirty || isDirty)}
+                              errorText={error?.message}
+                            />
                           </>
                         )}
                       />
@@ -348,22 +261,13 @@ const Form = () => {
                         control={control}
                         render={({ field: { onChange, value }, fieldState: { error, isDirty, invalid } }) => (
                           <>
-                            <TextField
-                              variant="outlined"
-                              // size="small"
-                              // style={{ border: "2px solid red", borderRadius: "5px" }}
-                              className="w-full"
+                            <StyledInput
                               value={value}
                               onChange={onChange}
                               placeholder="Enter PAN"
                               error={invalid && (!isDirty || isDirty)}
+                              errorText={error?.message}
                             />
-                            {invalid && (!isDirty || isDirty) && (
-                              <p className="text-red-500 text-[13px]">
-                                {error?.message}
-                              </p>
-                            )
-                            }
                           </>
                         )}
                       />
@@ -377,23 +281,13 @@ const Form = () => {
                         control={control}
                         render={({ field: { onChange, value }, fieldState: { error, isDirty, invalid } }) => (
                           <>
-                            <Textarea
-                              style={{ background: "#FAFAFA", border: `1px solid ${invalid && (!isDirty || isDirty) ? "red" : "#E1E1E1"}`, }}
-                              minRows={2}
-                              maxRows={4}
-                              placeholder="Enter address..."
-                              variant="outlined"
+                            <StyledTextArea
                               value={value}
                               onChange={onChange}
+                              placeholder="Enter address..."
                               error={invalid && (!isDirty || isDirty)}
-                            // color="neutral"
+                              errorText={error?.message}
                             />
-                            {invalid && (!isDirty || isDirty) && (
-                              <p className="text-red-500 text-[13px]">
-                                {error?.message}
-                              </p>
-                            )
-                            }
                           </>
                         )}
                       />
