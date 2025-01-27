@@ -1,0 +1,11 @@
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.BL\bin\Debug\net8.0\Claims.BL.deps.json
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.BL\bin\Debug\net8.0\Claims.BL.dll
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.BL\bin\Debug\net8.0\Claims.BL.pdb
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.BL\obj\Debug\net8.0\Claims.BL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.BL\obj\Debug\net8.0\Claims.BL.AssemblyInfoInputs.cache
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.BL\obj\Debug\net8.0\Claims.BL.AssemblyInfo.cs
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.BL\obj\Debug\net8.0\Claims.BL.csproj.CoreCompileInputs.cache
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.BL\obj\Debug\net8.0\Claims.BL.dll
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.BL\obj\Debug\net8.0\refint\Claims.BL.dll
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.BL\obj\Debug\net8.0\Claims.BL.pdb
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.BL\obj\Debug\net8.0\ref\Claims.BL.dll

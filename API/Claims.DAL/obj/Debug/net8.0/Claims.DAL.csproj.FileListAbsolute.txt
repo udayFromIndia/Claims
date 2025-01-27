@@ -1,0 +1,17 @@
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.DAL\bin\Debug\net8.0\Claims.DAL.deps.json
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.DAL\bin\Debug\net8.0\Claims.DAL.runtimeconfig.json
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.DAL\bin\Debug\net8.0\Claims.DAL.dll
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.DAL\bin\Debug\net8.0\Claims.DAL.pdb
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.DAL\obj\Debug\net8.0\Claims.DAL.csproj.AssemblyReference.cache
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.DAL\obj\Debug\net8.0\Claims.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.DAL\obj\Debug\net8.0\Claims.DAL.AssemblyInfoInputs.cache
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.DAL\obj\Debug\net8.0\Claims.DAL.AssemblyInfo.cs
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.DAL\obj\Debug\net8.0\Claims.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.DAL\obj\Debug\net8.0\Claims.DAL.dll
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.DAL\obj\Debug\net8.0\refint\Claims.DAL.dll
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.DAL\obj\Debug\net8.0\Claims.DAL.pdb
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.DAL\obj\Debug\net8.0\Claims.DAL.genruntimeconfig.cache
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.DAL\obj\Debug\net8.0\ref\Claims.DAL.dll
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.DAL\bin\Debug\net8.0\Claims.BL.dll
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.DAL\bin\Debug\net8.0\Claims.BL.pdb
+C:\Users\Uday.Shankar\source\repos\Claims\Claims.DAL\obj\Debug\net8.0\Claims.DAL.csproj.CopyComplete
